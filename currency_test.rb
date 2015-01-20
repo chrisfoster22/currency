@@ -2,6 +2,10 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
 
+class DifferentCurrencyCodeError < StandardError
+  puts "Different currencies cannot be added together"
+end
+
 class CurrencyTest < Minitest::Test
 
   def test_has_amount_and_currency_code
@@ -26,4 +30,11 @@ class CurrencyTest < Minitest::Test
     assert_equal 50, dollar - canadian_dollar
   end
 
+  def test_different_currencies_cannot_be_added_together
+    dollar = Currency.new(100, "USD")
+    canadian_dollar = Currency.new(50, "CAD")
+    assert_raises(DifferentCurrencyCodeError) do
+      dollar - canadian_dollar
+    end
+  end
 end
