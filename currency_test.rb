@@ -8,6 +8,12 @@ class CurrencyTest < Minitest::Test
     assert Currency.new("", "")
   end
 
+  def test_identical_currencies_equal_each_other
+    dollar = Currency.new(100, "USD")
+    canadian_dollar = Currency.new(100, "USD")
+    assert canadian_dollar == dollar
+  end
+
 
 
 
