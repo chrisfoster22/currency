@@ -20,5 +20,9 @@ class CurrencyTest < Minitest::Test
     assert_equal 150, dollar + canadian_dollar
   end
 
+  def test_identical_currencies_can_be_added_together
+    dollar = Currency.new(100, "USD")
+    canadian_dollar = Currency.new(50, "USD")
+    assert_equal 50, dollar - canadian_dollar
 
 end
