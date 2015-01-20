@@ -16,4 +16,10 @@ class Currency
     end
   end
 
+  def -(another_currency)
+    if self.code == another_currency.code
+      self.amount - another_currency.amount
+    end
+  end
+
 end
