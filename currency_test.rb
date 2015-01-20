@@ -43,8 +43,7 @@ class CurrencyTest < Minitest::Test
 
   def test_can_be_multiplied_by_fixnum_or_float
     dollar = Currency.new(10, "USD")
-    canadian_dollar = Currency.new(5, "USD")
-    assert_equal 50, dollar * canadian_dollar
+    assert_equal 50, dollar * 5
     assert_equal 50, dollar * 5.0
   end
 
