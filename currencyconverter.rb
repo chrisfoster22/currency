@@ -9,12 +9,12 @@ class CurrencyConverter
   end
 
   def convert(currency, code)
-    if @currencies.include? code
+    if currencies.include? code
       if currency.code == :USD
-        return Currency.new((currency.amount * @currencies[code]), code)
+        return Currency.new((currency.amount * currencies[code]), code)
       else
         return Currency.new(((currency.amount *
-        (@currencies[code] / @currencies[currency.code])).round(2)), code)
+        (currencies[code] / currencies[currency.code])).round(2)), code)
       end
     else
       raise UnknownCurrencyCodeError, "Unknown Currency"
