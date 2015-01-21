@@ -2,8 +2,12 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
 require './currencyconverter'
+require 'pry'
 
 class DifferentCurrencyCodeError < StandardError
+end
+
+class UnknownCurrencyCodeError < StandardError
 end
 
 class CurrencyTest < Minitest::Test
@@ -78,7 +82,15 @@ class CurrencyTest < Minitest::Test
     assert_equal currency_converter.convert(currency2, :EUR), Currency.new(69.92, :EUR)
     assert_equal currency_converter.convert(currency2, :GBP), Currency.new(53.66, :GBP)
     assert_equal currency_converter.convert(currency2, :USD), Currency.new(81.30, :USD)
-    assert_equal currency_converter.convert(currency2, :JPY), Currency.new(9,582.93, :JPY)
-
+    assert_equal currency_converter.convert(currency2, :JPY), Currency.new(9582.93, :JPY)
   end
+
+  def test_error_if_unknown_currency_code
+    currency1 = Currency.new(100, :USD)
+    currency_converter = CurrencyConverter.new
+    assert_raises(UnknownCurrencyCodeError) do
+      currency_converter.convert(currency1, :ZAR)
+    end
+  end
+
 end
