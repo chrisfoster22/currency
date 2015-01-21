@@ -93,4 +93,10 @@ class CurrencyTest < Minitest::Test
     end
   end
 
+  def test_currency_symbols_can_be_inputed_and_converted
+    currency1 = Currency.new("$100.00")
+    currency_converter = CurrencyConverter.new
+    assert_equal currency1, Currency.new(100, :USD)
+  end
+
 end
