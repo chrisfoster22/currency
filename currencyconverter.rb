@@ -5,7 +5,7 @@ class CurrencyConverter
   attr_accessor :currencies
 
   def initialize
-    @currencies = {USD: 1.0, EUR: 0.74}
+    @currencies = {USD: 1.0, EUR: 0.86, GBP: 0.66, CAD: 1.23, JPY: 117.87}
   end
 
   def convert(currency, code)
