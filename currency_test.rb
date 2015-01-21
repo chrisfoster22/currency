@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './currency'
 
 class DifferentCurrencyCodeError < StandardError
-  puts "Different currencies cannot be added together"
 end
 
 class CurrencyTest < Minitest::Test
@@ -46,6 +45,13 @@ class CurrencyTest < Minitest::Test
     canadian_dollar = Currency.new(5, "CAD")
     assert_equal Currency.new(50, "USD"), dollar * 5
     assert_equal Currency.new(50.0, "CAD"), canadian_dollar * 10.0
+  end
+
+  def test_currency_converter_contains_hash_of_codes
+    assert CurrencyConverter.new.currencies.key?(USD)
+    assert CurrencyConverter.new.currencies.key?(EUR)
+    assert CurrencyConverter.new.currencies.value?(1.0)
+    assert CurrencyConverter.new.currencies.value?(0.74)
   end
 
 end
