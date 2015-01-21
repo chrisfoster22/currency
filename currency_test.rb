@@ -69,11 +69,16 @@ class CurrencyTest < Minitest::Test
 
   def test_can_convert_many_currencies
     currency1 = Currency.new(100, :USD)
+    currency2 = Currency.new(100, :CAD)
     currency_converter = CurrencyConverter.new
     assert_equal currency_converter.convert(currency1, :EUR), Currency.new(86, :EUR)
     assert_equal currency_converter.convert(currency1, :GBP), Currency.new(66, :GBP)
     assert_equal currency_converter.convert(currency1, :CAD), Currency.new(123, :CAD)
     assert_equal currency_converter.convert(currency1, :JPY), Currency.new(11787, :JPY)
+    assert_equal currency_converter.convert(currency2, :EUR), Currency.new(69.92, :EUR)
+    assert_equal currency_converter.convert(currency2, :GBP), Currency.new(53.66, :GBP)
+    assert_equal currency_converter.convert(currency2, :USD), Currency.new(81.30, :USD)
+    assert_equal currency_converter.convert(currency2, :JPY), Currency.new(9,582.93, :JPY)
 
   end
 end
