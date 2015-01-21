@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
@@ -95,8 +97,10 @@ class CurrencyTest < Minitest::Test
 
   def test_currency_symbols_can_be_inputed_and_converted
     currency1 = Currency.new("$100.00")
+    currency2 = Currency.new("€100.00")
     currency_converter = CurrencyConverter.new
     assert_equal currency1, Currency.new(100, :USD)
+    assert_equal currency2, Currency.new(100, :CAD)
   end
 
 end
