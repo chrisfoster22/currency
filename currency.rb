@@ -28,4 +28,9 @@ class Currency
     end
   end
 
+  def *(number)
+    a = self.amount * number
+    Currency.new(a, code)
+  end
+
 end
