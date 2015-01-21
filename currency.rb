@@ -16,7 +16,7 @@ class Currency
     if self.code == another_currency.code
       self.amount + another_currency.amount
     else
-      raise DifferentCurrencyCodeError
+      raise DifferentCurrencyCodeError, "Different currencies cannot be added together"
     end
   end
 
@@ -24,7 +24,7 @@ class Currency
     if self.code == another_currency.code
       self.amount - another_currency.amount
     else
-      raise DifferentCurrencyCodeError
+      raise DifferentCurrencyCodeError, "Different currencies cannot be subtracted together"
     end
   end
 

@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
+require './currencyconverter.rb'
 
 class DifferentCurrencyCodeError < StandardError
 end
@@ -48,8 +49,8 @@ class CurrencyTest < Minitest::Test
   end
 
   def test_currency_converter_contains_hash_of_codes
-    assert CurrencyConverter.new.currencies.key?(USD)
-    assert CurrencyConverter.new.currencies.key?(EUR)
+    assert CurrencyConverter.new.currencies.key?(:USD)
+    assert CurrencyConverter.new.currencies.key?(:EUR)
     assert CurrencyConverter.new.currencies.value?(1.0)
     assert CurrencyConverter.new.currencies.value?(0.74)
   end
