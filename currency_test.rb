@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './currency'
-require './currencyconverter.rb'
+require './currencyconverter'
 
 class DifferentCurrencyCodeError < StandardError
 end

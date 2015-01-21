@@ -1,4 +1,3 @@
-require './currency_test'
 
 class Currency
   attr_accessor :amount, :code
